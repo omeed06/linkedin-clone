@@ -3,7 +3,7 @@ import { Avatar } from '@mui/material'
 
 const HeaderMenus = ({avatar,Icon,title}) => {
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='header-Menu flex flex-col justify-center items-center'>
         {Icon && <Icon />}
         {avatar && (
         <Avatar className="" src={avatar}/>

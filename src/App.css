@@ -1,3 +1,7 @@
+.app {
+    background-color: #f3f2ef;
+}
+
 .iconn > img {
     object-fit: contain;
     height: 40px;

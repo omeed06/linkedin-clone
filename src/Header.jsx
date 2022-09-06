@@ -24,7 +24,7 @@ function Headers() {
           </div>
         </div>
 
-        <div className="header-Menu flex gap-4 md:gap-10">
+        <div className="flex gap-4 md:gap-10">
           <HeaderMenus Icon={HomeIcon} title="Home" />
           <HeaderMenus Icon={SupervisorAccountIcon} title="My Network" />
           <HeaderMenus Icon={WorkIcon} title="Jobs" />

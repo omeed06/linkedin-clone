@@ -1,13 +1,20 @@
-import React from 'react'
-import Headers from './Header'
-
+import React from "react";
+import Headers from "./Header";
+import "./App.css";
+import LeftSidebar from "./LeftSidebar";
+import InnerSection from "./InnerSection";
+import RightSidebar from "./RightSidebar";
 const App = () => {
   return (
     <>
-    <Headers />
-    
+     <Headers />
+      <div className="app flex justify-center items-start gap-10">
+      <LeftSidebar />
+      <InnerSection />
+      <RightSidebar />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
