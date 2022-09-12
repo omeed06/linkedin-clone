@@ -8,8 +8,7 @@ const HeaderMenus = ({avatar,Icon,title}) => {
         {avatar && (
         <Avatar className="" src={avatar}/>
         )}
-        <h4>{title}</h4>
-
+        <h4 className='hidden lg:block'>{title}</h4>
     </div>
   )
 }

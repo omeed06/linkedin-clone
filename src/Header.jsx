@@ -20,7 +20,7 @@ function Headers() {
           </div>
           <div className="search-input flex p-2 items-center rounded-lg bg-[#eef3f8]">
             <SearchIcon />
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="Search" className="hidden lg:block"/>
           </div>
         </div>
 

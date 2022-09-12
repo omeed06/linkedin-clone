@@ -3,7 +3,7 @@ import { Avatar } from "@mui/material";
 import "./innerSection.css";
 const InnerSection = () => {
   return (
-    <div className="container max-w-xl border-2 rounded-lg bg-[#fff]">
+    <div className="container max-w-xl border-2 rounded-lg bg-[#fff] md:mr-10">
       <div className="inner-search flex py-2 px-5 gap-2 items-center">
         <Avatar
           src="https://media-exp1.licdn.com/dms/image/C4D03AQFBvia2Cs03Qw/profile-displayphoto-shrink_200_200/0/1618318553307?e=1668038400&v=beta&t=mpTz-yUgKxAwYrPmj1KVX1bj1V-ItcgQFeNiGTcHa1Y"
