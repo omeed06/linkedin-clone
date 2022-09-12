@@ -3,7 +3,7 @@ import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 const RightSidebar = () => {
   return (
-    <div className=" xs: hidden lg:block container flex flex-col border-2 rounded-lg bg-[#fff] max-w-xs ">
+    <div className=" xs: hidden lg:block mx-2 container flex flex-col border-2 rounded-lg bg-[#fff] max-w-xs ">
       <div className="flex justify-between w-full items-center px-2 py-2">
         <p>Add to your feed</p>
         <button type="button" className="">

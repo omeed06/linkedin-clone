@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
      <Headers />
-      <div className="app flex justify-center items-start gap-10">
+      <div className="app flex justify-center items-start">
       <LeftSidebar />
       <InnerSection />
       <RightSidebar />
