@@ -31,7 +31,7 @@ const RightSidebar = () => {
             sx={{ width: 64, height: 64 }}
           />
           <div className="px-2">
-            <p className="font-medium text-lg">MirWais Azeem</p>
+            <p className="font-medium xl:text-lg">MirWais Azeem</p>
             <p className="">Junior Webdeveloper</p>
             <p className="">Rapidobots</p>
             <button className="px-2 py-2 rounded-full border-2 ">
@@ -47,7 +47,7 @@ const RightSidebar = () => {
             sx={{ width: 64, height: 64 }}
           />
           <div className="px-2">
-            <p className="font-medium text-lg">Salman Nadeem</p>
+            <p className="font-medium xl:text-lg">Salman Nadeem</p>
             <p className="">Senior Full Stack Developer</p>
             <p className="">Rapidobots</p>
             <button className="px-2 py-2 rounded-full border-2 ">
@@ -63,7 +63,7 @@ const RightSidebar = () => {
             sx={{ width: 64, height: 64 }}
           />
           <div className="px-2">
-            <p className="font-medium text-lg">Safwan Ahmed Khan</p>
+            <p className="font-medium xl:text-lg">Safwan Ahmed Khan</p>
             <p className="">Social Media Manager</p>
             <p className="">Rapidobots</p>
             <button className="px-2 py-2 rounded-full border-2 ">

@@ -3,7 +3,7 @@ import { Avatar } from "@mui/material";
 
 const LeftSidebar = () => {
   return (
-    <div className="max-w-xs rounded-xl bg-[#fff] border-2 mx-5">
+    <div className="container rounded-xl bg-[#fff] border-2 md:mx-2 md:max-w-xs">
       <div className="flex flex-col justify-center items-center">
         <img
           src="https://media-exp1.licdn.com/dms/image/C4E16AQFTJgWygn5h0Q/profile-displaybackgroundimage-shrink_200_800/0/1661418944474?e=1668038400&v=beta&t=eyBJhE-RuCxSJiwQmaNQWXtwIJfj_Ar9juaHkBTeJAs"

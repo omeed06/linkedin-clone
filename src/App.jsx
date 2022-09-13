@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
      <Headers />
-      <div className="app flex justify-center items-start">
+      <div className="flex-wrap md:flex-nowrap app flex justify-center items-start">
       <LeftSidebar />
       <InnerSection />
       <RightSidebar />
