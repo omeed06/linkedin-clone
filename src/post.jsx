@@ -19,11 +19,11 @@ const Post = ({name,description,message,photoUrl}) => {
         </div>
 
 
-        <div className='py-5'>
+        <div className='py-5 px-2'>
             <h2>{message}</h2>
         </div>
 
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center px-2 gap-4'>
         <PostButtons Icon={ThumbUpIcon} title="Like"/>
         <PostButtons Icon={CommentIcon} title="Comment"/>
         <PostButtons Icon={ShareIcon} title="Share"/>
