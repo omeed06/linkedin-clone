@@ -2,7 +2,34 @@ import React from "react";
 import { Avatar } from "@mui/material";
 import "./innerSection.css";
 import Post from "./post";
+import { useState } from "react";
+import { useEffect } from "react";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { db } from "./firebase";
+
 const InnerSection = () => {
+  const postColumnRef = collection(db, "post");
+  const [posts, setPosts] = useState([]);
+
+  const sendpost = (e) => {
+    e.preventDefault();
+    addDoc(postColumnRef, {message: e.target.value})
+  };
+
+  useEffect(() => {
+    getDocs(postColumnRef)
+      .then((snapshot) => {
+        const snapshotPost = [];
+        snapshot.forEach((doc) => {
+          snapshotPost.push({ ...doc.data(), id: doc.id });
+        });
+        setPosts(snapshotPost);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   return (
     <div className="flex flex-col gap-4">
       <div className="container max-w-xl border-2 rounded-xl bg-[#fff] sm:mr-3">
@@ -11,12 +38,12 @@ const InnerSection = () => {
             src="https://media-exp1.licdn.com/dms/image/C4D03AQFBvia2Cs03Qw/profile-displayphoto-shrink_200_200/0/1618318553307?e=1668038400&v=beta&t=mpTz-yUgKxAwYrPmj1KVX1bj1V-ItcgQFeNiGTcHa1Y"
             sx={{ width: 64, height: 64 }}
           />
-          <button
+          <input
             type="text"
+            onBlur={sendpost}
+            placeholder="Send a post"
             className="rounded-full w-full h-14 border-2 border-inherit text-gray-800 text-start px-5 hover:bg-gray-100"
-          >
-            Start a post
-          </button>
+          ></input>
         </div>
 
         <div className="flex justify-center">
@@ -105,43 +132,51 @@ const InnerSection = () => {
           </div>
         </div>
       </div>
+      {posts.map((post) => (
+        <div>
+          <Post
+            name="umeed"
+            description="full stack developer"
+            message={post?.message}
+          />
+        </div>
+      ))}
 
-      
-      <div >
+      {/* <div>
         <Post
           name="umeed"
           description="full stack developer"
           message="he is such a good boy"
         />
       </div>
-      <div >
+      <div>
         <Post
           name="umeed"
           description="full stack developer"
           message="he is such a good boy"
         />
       </div>
-      <div >
+      <div>
         <Post
           name="umeed"
           description="full stack developer"
           message="he is such a good boy"
         />
       </div>
-      <div >
+      <div>
         <Post
           name="umeed"
           description="full stack developer"
           message="he is such a good boy"
         />
       </div>
-      <div >
+      <div>
         <Post
           name="umeed"
           description="full stack developer"
           message="he is such a good boy"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
