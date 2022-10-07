@@ -1,10 +1,5 @@
 import { Avatar } from "@mui/material";
 import React from "react";
-// import PostButtons from "./postButtons";
-// import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-// import CommentIcon from "@mui/icons-material/Comment";
-// import ShareIcon from "@mui/icons-material/Share";
-// import SendIcon from "@mui/icons-material/Send";
 
 const Post = ({ name, description, message, photoUrl }) => {
   return (
