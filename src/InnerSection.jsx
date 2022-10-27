@@ -4,23 +4,31 @@ import "./innerSection.css";
 import Post from "./post";
 import { useState } from "react";
 import { useEffect } from "react";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import "./App.css";
+import { storage } from "./firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 
 const InnerSection = () => {
   const postColumnRef = collection(db, "post");
   const [posts, setPosts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState("");
+  const [imageUpload, setImageUpload] = useState(null);
 
-  const sendpost = () => {
-    addDoc(postColumnRef, { message, createdAt: new Date() }).then(() => {
+  const uploadImage = async () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    await uploadBytes(imageRef, imageUpload)
+    return getDownloadURL(imageRef)
+  };
+
+  const sendpost = async () => {
+    const imagePath = await uploadImage();
+    console.log('imagePath', imagePath)
+    addDoc(postColumnRef, { message, createdAt: new Date(), imagePath }).then(() => {
       getData();
     });
     setShowModal(false);
@@ -33,9 +41,14 @@ const InnerSection = () => {
         snapshot.forEach((doc) => {
           snapshotPost.push({ ...doc.data(), id: doc.id });
         });
-        console.log(snapshotPost.sort(function (a, b) {
-          return new Date(b.createdAt.seconds * 1000) - new Date(a.createdAt.seconds * 1000);
-        }))
+        console.log(
+          snapshotPost.sort(function (a, b) {
+            return (
+              new Date(b.createdAt.seconds * 1000) -
+              new Date(a.createdAt.seconds * 1000)
+            );
+          })
+        );
         setPosts(
           snapshotPost.sort(function (a, b) {
             return new Date(b.createdAt) - new Date(a.createdAt);
@@ -252,9 +265,19 @@ const InnerSection = () => {
                 </button>
               </div>
             </div>
-
             <div className="flex gap-2 p-3">
-              <button className="flex px-2 py-2 items-center rounded-full hover:bg-gray-100">
+              <button
+                className="flex px-2 py-2 items-center rounded-full hover:bg-gray-100"
+              >
+                <input
+                  type="file"
+                  id="image-upload"
+                  style={{display:'none'}}
+                  onChange={(event) => {
+                    setImageUpload(event.target.files[0]);
+                  }}
+                />
+                <label for="image-upload">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -270,6 +293,7 @@ const InnerSection = () => {
                     fill="#5E5E5E"
                   ></path>
                 </svg>
+                </label>
               </button>
 
               <button className="flex px-2 py-2 items-center rounded-full hover:bg-gray-100">
@@ -417,6 +441,7 @@ const InnerSection = () => {
             name="umeed"
             description="full stack developer"
             message={post?.message}
+            imageUpload={post?.imagePath}
           />
         </div>
       ))}

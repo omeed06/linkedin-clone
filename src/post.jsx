@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import React from "react";
 
-const Post = ({ name, description, message, photoUrl }) => {
+const Post = ({ name, description, message, imageUpload }) => {
   return (
     <>
       <div className="container max-w-xl border-2 rounded-xl bg-[#fff] py-2 px-2">
@@ -18,6 +18,9 @@ const Post = ({ name, description, message, photoUrl }) => {
 
         <div className="py-5 px-2">
           <h2>{message}</h2>
+        </div>
+        <div className="">
+          {imageUpload && <img src={imageUpload} alt="" />}
         </div>
 
         <div className="border-t-[2px] border-gray-300 mx-2">
