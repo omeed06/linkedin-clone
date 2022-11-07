@@ -84,6 +84,15 @@ const InnerSection = () => {
         <div className="flex justify-center">
           <div className="flex items-center chote_mobile sm:px-5 md:px-2">
             <button className="flex px-2 py-4 gap-1 sm:gap-3 items-center rounded-lg hover:bg-gray-100">
+            <input
+                  type="file"
+                  id="image-upload"
+                  style={{display:'none'}}
+                  onChange={(event) => {
+                    setImageUpload(event.target.files[0]);
+                  }}
+                />
+                <label for="image-upload">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -99,6 +108,7 @@ const InnerSection = () => {
                   fill="#0064FF"
                 ></path>
               </svg>
+              </label>
               Photo
             </button>
           </div>

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false)
   return (
-    <>
+    <div className="">
+
       <div className="m-10">
         <a class="linkedin-logo" href="/" aria-label="Linkedin">
           <li-icon
@@ -30,30 +32,30 @@ const Login = () => {
           </li-icon>
         </a>
       </div>
-
-      <div className="flex justify-center items-center">
-        <div className="border outline-1 rounded-lg shadow-lg">
-          <div className="mx-4 my-4 gap-2">
+      <div className="flex justify-center items-center flex-col min-h-[calc(100vh-200px)]">
+        <div className="border outline-1 rounded-lg shadow-lg container max-w-sm">
+          <div className="px-5 py-5 gap-2">
             <p className="text-3xl font-semibold">Sign in</p>
             <p>Stay updated on your professional world</p>
           </div>
-          <div className="mx-4 my-4">
+          <div className="mx-4 my-2">
             <input
               type="text"
               name=""
               id=""
               placeholder="Email or Phone"
-              className="rounded-md min-w-full"
+              className="rounded-md min-w-full py-3"
             />
           </div>
-          <div className="mx-4 my-4">
+          <div className="mx-4 my-4 flex justify-end items-center">
             <input
-              type="text"
+              type={showPassword ? 'text' : 'password'}
               name=""
               id=""
               placeholder="Password"
-              className="rounded-md min-w-full"
+              className="rounded-md min-w-full py-3 relative"
             />
+            <span onClick={() => setShowPassword(!showPassword)} className="absolute px-2 hover:border hover:outline-1 hover:rounded-full hover:bg-[#98d8f473] font-medium text-[#0073b1] mx-1">{showPassword ? 'Hide': "Show"}</span>
           </div>
           <div className="mx-4 my-4">
             <p className="font-medium text-[#0073b1]">Forget Password ?</p>
@@ -127,11 +129,12 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center mt-10">
-          <p>New to Linkedin ?</p>
+      <div className="flex justify-center items-center mt-5 gap-1">
+          <p>New to LinkedIn ?</p>
+          <button className="px-2 py-1 rounded-full text-[#0A66C2] font-medium hover:underline cursor-pointer hover:bg-[#98d8f473] hover:outline-none">Join now</button>
         </div>
-    </>
+    </div>
+      </div>
   );
 };
 
